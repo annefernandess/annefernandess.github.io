@@ -1,0 +1,59 @@
+---
+import Zigzag from "./Zigzag.astro";
+import { useT } from "../i18n";
+
+const t = useT(Astro.currentLocale).experience;
+---
+
+<section id="experiencia" class="bg-mustard">
+  <Zigzag />
+  <div class="px-4 py-20 md:px-10 md:py-28">
+    <div class="mb-12 flex items-baseline justify-between">
+      <p class="label">{t.num}</p>
+      <p class="label">{t.range}</p>
+    </div>
+    <h2 class="mb-20 text-center font-display text-section font-medium">
+      {t.title}
+    </h2>
+
+    <div class="mx-auto grid max-w-6xl gap-20">
+      {t.entries.map((e) => (
+        <article class="grid gap-8 border-t-2 border-ink pt-8 lg:grid-cols-[1fr_2fr] lg:gap-12">
+          <header class="lg:sticky lg:top-8 lg:self-start">
+            <p class="label">{e.period}</p>
+            <h3 class="mt-3 font-display text-heading font-medium">{e.org}</h3>
+            <p class="mt-1 font-display text-subheading italic">{e.role}</p>
+            <p class="mt-4 text-[12px]">{e.via}</p>
+            {e.about && <p class="mt-4 max-w-xs text-body-sm">{e.about}</p>}
+          </header>
+
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {e.items.map((it) => (
+              <li
+                class:list={[
+                  "flex flex-col rounded-card bg-bone p-6",
+                  e.items.length === 1 && "sm:col-span-2",
+                ]}
+              >
+                <h4 class="font-display text-heading-sm font-medium">
+                  {it.name}
+                </h4>
+                <p class="mt-2 flex-1 text-body-sm">{it.text}</p>
+                <ul
+                  class="mt-5 flex flex-wrap gap-1.5"
+                  aria-label={t.techLabel}
+                >
+                  {it.tags.map((t) => (
+                    <li class="rounded-pill border border-ink px-2.5 py-0.5 text-[12px]">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

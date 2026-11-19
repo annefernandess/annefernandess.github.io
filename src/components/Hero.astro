@@ -1,0 +1,42 @@
+---
+import Header from "./Header.astro";
+import { useT } from "../i18n";
+
+const t = useT(Astro.currentLocale).hero;
+---
+
+<section class="flex min-h-svh flex-col overflow-hidden bg-putty">
+  <Header />
+
+  <div class="flex flex-1 flex-col items-center justify-center gap-5 px-4 py-10 text-center">
+    <p class="label">{t.label}</p>
+    <a
+      href="#experiencia"
+      class="rounded-pill bg-ink px-[17px] py-[9px] text-[12px] text-paper transition-opacity hover:opacity-80"
+    >
+      {t.cta}
+    </a>
+  </div>
+
+  <!-- A casinha: o nome é a placa, o telhado é o único vermelho da página -->
+  <div class="flex flex-col items-center text-display" aria-hidden="true">
+    <svg
+      viewBox="0 0 240 44"
+      class="ink -mb-[0.14em] w-[2.2em] overflow-visible"
+    >
+      <path d="M2 42 120 4l118 38h-22L120 16 24 42Z" class="fill-doghouse" />
+      <!-- passarinho no topo do telhado -->
+      <path
+        d="M115 1.5c1.5-3 4-3 5 0m0 0c1-3 3.5-3 5 0"
+        class="fill-none stroke-ink"
+        stroke-width="1.6"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+  <h1 class="-mb-[0.16em] text-center font-display text-display font-medium select-none">
+    <span class="sr-only">Anne Fernandes</span>
+    <span aria-hidden="true">Anne</span>
+  </h1>
+</section>

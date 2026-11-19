@@ -1,0 +1,128 @@
+---
+import { useT } from "../i18n";
+
+const t = useT(Astro.currentLocale).footer;
+const links = [
+  {
+    label: "annefernandeess@gmail.com",
+    href: "mailto:annefernandeess@gmail.com",
+  },
+  { label: "GitHub", href: "https://github.com/annefernandess" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/annefernandess" },
+];
+
+// Estrelas: [x%, y%, tamanho px, atraso s]
+const stars = [
+  [8, 12, 14, 0],
+  [18, 34, 9, 1.2],
+  [27, 8, 11, 2.1],
+  [40, 22, 7, 0.6],
+  [62, 10, 12, 1.7],
+  [74, 30, 8, 0.3],
+  [85, 14, 15, 2.4],
+  [93, 38, 9, 1],
+  [12, 58, 8, 1.9],
+  [90, 60, 10, 0.8],
+  [50, 6, 8, 2.8],
+  [33, 48, 7, 1.4],
+];
+---
+
+<footer
+  id="contato"
+  class="relative overflow-hidden bg-linear-to-b from-dusk-top via-dusk-mid to-dusk-low"
+>
+  <div aria-hidden="true">
+    {stars.map(([x, y, s, d]) => (
+      <svg
+        viewBox="0 0 20 20"
+        class="twinkle absolute fill-paper stroke-ink/60"
+        style={`left:${x}%;top:${y}%;width:${s}px;animation-delay:${d}s`}
+      >
+        <path
+          d="M10 1.5 12.4 7l6 .5-4.6 3.9 1.4 5.9L10 14.2l-5.2 3.1 1.4-5.9L1.6 7.5l6-.5Z"
+          stroke-width="1"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ))}
+  </div>
+
+  <div class="relative px-4 pt-24 md:px-10 md:pt-32">
+    <p class="label mb-10 text-center">{t.label}</p>
+    <figure class="mx-auto max-w-4xl text-center">
+      <blockquote
+        lang="en"
+        class="font-display text-[clamp(36px,6vw,52px)] leading-[1.05] font-medium tracking-[-0.47px] text-balance"
+      >
+        “Keep looking up…
+        <br />
+        <em class="font-normal">…that’s the secret of life.</em>”
+      </blockquote>
+      <figcaption class="label mt-6">Snoopy</figcaption>
+    </figure>
+
+    <ul class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[16px]">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class="hover:underline"
+            {...(l.href.startsWith("http") && {
+              target: "_blank",
+              rel: "noopener",
+            })}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- A casinha de novo, agora sob as estrelas -->
+  <div class="relative mt-16 flex flex-col items-center" aria-hidden="true">
+    <svg viewBox="0 0 200 150" class="ink w-36 overflow-visible md:w-44">
+      <path
+        d="M46 150V72l54-38 54 38v78Z"
+        class="fill-doghouse/85 stroke-ink"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M46 84h108M46 108h108M46 130h108"
+        class="stroke-ink/40"
+        stroke-width="1.5"
+      />
+      <path
+        d="M14 66 100 12l86 54-12 8-74-46-74 46Z"
+        class="fill-doghouse stroke-ink"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M93 4c1.5-3.5 4.5-3.5 6 0m0 0c1.5-3.5 4.5-3.5 6 0"
+        class="fill-none stroke-ink"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+    <svg
+      viewBox="0 0 1440 120"
+      preserveAspectRatio="none"
+      class="-mt-8 block h-20 w-full md:h-24"
+    >
+      <path
+        d="M0 120V78C300 40 520 22 720 22s420 18 720 56v42Z"
+        class="fill-grass"
+      />
+    </svg>
+  </div>
+
+  <div class="relative flex flex-col justify-between gap-2 bg-grass px-4 pb-6 text-[12px] sm:flex-row md:px-10">
+    <p>
+      © {new Date().getFullYear()} Anne Fernandes · {t.location}
+    </p>
+    <p>{t.tribute}</p>
+  </div>
+</footer>

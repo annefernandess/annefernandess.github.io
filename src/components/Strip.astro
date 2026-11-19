@@ -1,0 +1,59 @@
+---
+import { useT } from "../i18n";
+
+const t = useT(Astro.currentLocale).strip;
+---
+
+<section id="trajetoria" class="bg-bone px-4 py-20 md:px-10 md:py-28">
+  <div class="mb-12 flex items-baseline justify-between">
+    <p class="label">{t.num}</p>
+    <p class="label">{t.range}</p>
+  </div>
+  <h2 class="mb-14 text-center font-display text-section font-medium">
+    {t.title}
+  </h2>
+
+  <ol class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    {t.panels.map((p) => (
+      <li class="relative flex min-h-[340px] flex-col justify-between p-6">
+        <span
+          class="ink pointer-events-none absolute inset-0 border-2 border-ink"
+          aria-hidden="true"
+        />
+
+        <div class="flex items-start justify-between gap-4">
+          <p class="label pt-1">{p.when}</p>
+          <div class="relative mr-1 -rotate-2">
+            <span
+              class="ink pointer-events-none absolute inset-0 rounded-[50%] border-[1.5px] border-ink"
+              aria-hidden="true"
+            />
+            <svg
+              viewBox="0 0 14 22"
+              class="ink absolute -bottom-3 left-1/4 w-3"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 0 6 21 11 0"
+                class="fill-bone stroke-ink"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p class="relative px-7 py-3.5 font-display text-[15px] whitespace-nowrap italic">
+              {p.speech}
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display text-heading-sm font-medium">{p.role}</h3>
+          <p class="text-body-sm">{p.org}</p>
+          <p class="mt-4 border-t border-ink/20 pt-3 text-[12px] text-graphite">
+            {p.detail}
+          </p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

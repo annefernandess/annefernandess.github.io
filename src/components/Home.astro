@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "./Hero.astro";
+import Strip from "./Strip.astro";
+import Experience from "./Experience.astro";
+import Academic from "./Academic.astro";
+import Logbook from "./Logbook.astro";
+import Footer from "./Footer.astro";
+import { useT } from "../i18n";
+
+const { meta } = useT(Astro.currentLocale);
+---
+
+<Base title={meta.title} description={meta.description}>
+  <main>
+    <Hero />
+    <Strip />
+    <Experience />
+    <Academic />
+    <Logbook />
+  </main>
+  <Footer />
+</Base>

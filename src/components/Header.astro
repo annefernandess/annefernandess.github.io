@@ -1,0 +1,31 @@
+---
+import { useT, langOf, homePath } from "../i18n";
+
+const lang = langOf(Astro.currentLocale);
+const t = useT(lang).header;
+const other = lang === "pt" ? "en" : "pt";
+---
+
+<header class="flex items-center justify-between px-4 py-4 md:px-10">
+  <a
+    href={homePath[lang]}
+    aria-label={t.home}
+    class="grid size-8 place-items-center rounded-full border-[1.5px] border-ink font-display text-[15px] font-medium"
+  >
+    A
+  </a>
+  <nav class="flex gap-6 text-[12px]">
+    <a href="#contato" class="hover:underline">
+      {t.contact}
+    </a>
+    <a
+      href={homePath[other]}
+      hreflang={other}
+      lang={other}
+      aria-label={t.switchAria}
+      class="hover:underline"
+    >
+      {t.switchLabel}
+    </a>
+  </nav>
+</header>

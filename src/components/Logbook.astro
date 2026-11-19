@@ -1,0 +1,42 @@
+---
+// "Diário de bordo" — aceno discreto ao Ás
+import { useT } from "../i18n";
+
+const t = useT(Astro.currentLocale).logbook;
+---
+
+<section class="bg-putty px-4 py-20 md:px-10 md:py-28">
+  <div class="mb-12 flex items-baseline justify-between">
+    <p class="label">{t.num}</p>
+    <p class="label">{t.side}</p>
+  </div>
+
+  <article
+    class="relative mx-auto max-w-2xl bg-ink p-8 pb-14 text-paper md:p-12 md:pb-16"
+    style="clip-path: polygon(24px 0, calc(100% - 24px) 0, 100% 24px, 100% calc(100% - 24px), calc(100% - 24px) 100%, 24px 100%, 0 calc(100% - 24px), 0 24px)"
+  >
+    <h2 class="mb-10 font-display text-heading-lg font-medium">{t.title}</h2>
+    <dl class="grid gap-6">
+      {t.skills.map(([k, v]) => (
+        <div class="grid gap-1 border-t border-paper/20 pt-4 md:grid-cols-[9rem_1fr] md:gap-6">
+          <dt class="label text-paper/60">{k}</dt>
+          <dd class="text-body-sm">{v}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <h3 class="mt-12 mb-4 font-display text-subheading">{t.honorsTitle}</h3>
+    <ul class="grid gap-2">
+      {t.honors.map(([y, t]) => (
+        <li class="flex gap-4 text-body-sm">
+          <span class="font-medium">{y}</span>
+          <span class="text-paper/80">{t}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="absolute bottom-6 left-8 text-micro tracking-[0.08em] text-paper/70 uppercase md:left-12">
+      {t.stamp}
+    </p>
+  </article>
+</section>
