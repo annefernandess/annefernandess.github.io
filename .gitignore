@@ -1,0 +1,32 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+.next/
+.astro/
+.vercel/
+.turbo/
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / SO
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Claude Code (local)
+.claude/settings.local.json
+
+# Docs de IA / referência local
+CLAUDE.md
+docs/DESIGN.md
