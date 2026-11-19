@@ -63,8 +63,8 @@ const stars = [
     </figure>
 
     <ul class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[16px]">
-      {links.map((l) => (
-        <li>
+      {links.map((l, i) => (
+        <li class:list={[i === 0 && "basis-full text-center text-[18px]"]}>
           <a
             href={l.href}
             class="hover:underline"
