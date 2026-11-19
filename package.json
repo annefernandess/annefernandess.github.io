@@ -2,6 +2,7 @@
   "name": "annefernandess.github.io",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@10.29.3",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
